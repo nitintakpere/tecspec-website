@@ -1,0 +1,356 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* Core palette — Navy / Cream / Gold (navy matches Tecspec Dashboard primary) */
+  /* Dark Teal palette — primary used by header, hero, footer, buttons.
+     --color-navy-deep stays visually *lighter* than --color-navy so the StatsBar
+     reads as a lighter inset strip between dark surrounds.
+     (Variables still named *-navy for compatibility with existing class names.) */
+  --color-navy:        #0A3D3D;  /* primary — dark teal */
+  --color-navy-deep:   #155555;  /* used only by StatsBar — lighter teal inset */
+  --color-navy-soft:   #1F7575;  /* lighter teal accent */
+  --color-cream:       #F5F0E8;
+  --color-cream-warm:  #EFE7D6;
+  --color-cream-line:  #E2D9C6;
+  --color-gold:        #C9A84C;
+  --color-gold-soft:   #d8bd6c;
+  --color-gold-deep:   #9c8138;
+
+  /* Aliases for Tailwind utility generation */
+  --color-app:         var(--color-cream);
+  --color-app-light:   #ffffff;
+
+  --font-family-sans:  'Inter', system-ui, sans-serif;
+  --font-family-serif: 'Playfair Display', Georgia, serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--color-cream);
+  color: #1A1A1A;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root { width: 100%; max-width: 100%; min-height: 100vh; }
+
+/* ============================================================
+   LAYOUT HELPERS
+   ============================================================ */
+.container-x {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.section {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+@media (min-width: 768px) {
+  .section { padding-top: 5.5rem; padding-bottom: 5.5rem; }
+}
+
+.bg-cream      { background-color: var(--color-cream); }
+.bg-cream-warm { background-color: var(--color-cream-warm); }
+.bg-white      { background-color: #ffffff; }
+.bg-navy       { background-color: var(--color-navy); }
+.bg-navy-deep  { background-color: var(--color-navy-deep); }
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+.font-serif { font-family: 'Playfair Display', Georgia, serif; }
+
+.eyebrow {
+  display: inline-block;
+  color: var(--color-gold);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.section-heading {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.7rem;
+  font-weight: 500;
+  letter-spacing: -0.012em;
+  color: var(--color-navy);
+  line-height: 1.2;
+  margin-top: 0.7rem;
+}
+@media (min-width: 768px) {
+  .section-heading { font-size: 2.05rem; }
+}
+.section-heading--light { color: var(--color-cream); }
+
+.section-divider {
+  width: 44px;
+  height: 1px;
+  background-color: var(--color-gold);
+  margin-top: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-text {
+  color: rgba(10, 22, 40, 0.72);
+  font-size: 0.97rem;
+  line-height: 1.75;
+  max-width: 38rem;
+}
+.section-text--light { color: rgba(245, 240, 232, 0.78); }
+
+/* Inline gold heading accent — no italic */
+.gold-mark {
+  color: var(--color-gold);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 500;
+}
+
+/* ============================================================
+   BUTTONS — pill shapes
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.75rem 1.6rem;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.3s ease, color 0.3s ease,
+              border-color 0.3s ease, transform 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+.btn-gold {
+  background-color: var(--color-gold);
+  color: var(--color-navy);
+  border-color: var(--color-gold);
+  box-shadow: 0 4px 14px -6px rgba(201, 168, 76, 0.55);
+}
+.btn-gold:hover {
+  background-color: var(--color-navy);
+  color: var(--color-gold);
+  border-color: var(--color-gold);
+  transform: translateY(-1px);
+}
+
+.btn-outline-cream {
+  background-color: transparent;
+  color: var(--color-cream);
+  border-color: rgba(245, 240, 232, 0.55);
+}
+.btn-outline-cream:hover {
+  background-color: var(--color-cream);
+  color: var(--color-navy);
+  border-color: var(--color-cream);
+}
+
+.btn-outline-navy {
+  background-color: transparent;
+  color: var(--color-navy);
+  border-color: var(--color-navy);
+}
+.btn-outline-navy:hover {
+  background-color: var(--color-navy);
+  color: var(--color-cream);
+}
+
+/* Compact navbar variant */
+.btn-sm { padding: 0.55rem 1.2rem; font-size: 0.7rem; letter-spacing: 0.14em; }
+
+/* ============================================================
+   NAVIGATION TABS — clean text, gold hover
+   ============================================================ */
+.nav-tab {
+  display: inline-block;
+  padding: 0.45rem 0.85rem;
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(245, 240, 232, 0.78);
+  text-decoration: none;
+  position: relative;
+  transition: color 0.22s ease;
+}
+.nav-tab::after {
+  content: '';
+  position: absolute;
+  left: 0.85rem;
+  right: 0.85rem;
+  bottom: 0.25rem;
+  height: 1px;
+  background-color: var(--color-gold);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.22s ease;
+}
+.nav-tab:hover {
+  color: var(--color-gold);
+}
+.nav-tab:hover::after {
+  transform: scaleX(1);
+}
+
+.nav-tab-mobile {
+  display: block;
+  padding: 0.7rem 1rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(245, 240, 232, 0.85);
+  border-radius: 8px;
+  transition: color 0.18s ease, background-color 0.18s ease;
+}
+.nav-tab-mobile:hover {
+  color: var(--color-gold);
+  background-color: rgba(201, 168, 76, 0.08);
+}
+
+/* ============================================================
+   STATS BAR — gold hover highlight on each stat item
+   ============================================================ */
+.stat-item {
+  display: block;
+  padding: 0.6rem 0.5rem;
+  border-radius: 12px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  cursor: default;
+}
+.stat-item .stat-value,
+.stat-item .stat-label {
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+.stat-item:hover {
+  background-color: rgba(201, 168, 76, 0.06);
+  transform: translateY(-2px);
+}
+.stat-item:hover .stat-value {
+  color: var(--color-gold-soft);
+  text-shadow: 0 0 14px rgba(201, 168, 76, 0.35);
+}
+.stat-item:hover .stat-label {
+  color: var(--color-gold);
+}
+
+/* ============================================================
+   SOCIAL — brand-coloured icons with brightness hover
+   ============================================================ */
+.social-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  color: #ffffff;
+  transition: filter 0.2s ease, transform 0.2s ease,
+              box-shadow 0.2s ease;
+}
+.social-pill:hover {
+  filter: brightness(1.18) saturate(1.05);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px -6px rgba(0, 0, 0, 0.45);
+}
+
+/* ============================================================
+   ICON STROKES — simple gold accent
+   ============================================================ */
+.icon-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.3rem;
+  height: 2.3rem;
+  color: var(--color-gold);
+  border: 1px solid var(--color-gold);
+  border-radius: 999px;
+  background-color: transparent;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up { animation: fade-up 0.6s ease-out both; }
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+  will-change: opacity, transform;
+}
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+/* ============================================================
+   FORM
+   ============================================================ */
+.field-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: rgba(10, 22, 40, 0.65);
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.field {
+  width: 100%;
+  padding: 0.7rem 0;
+  font-size: 0.95rem;
+  background-color: transparent;
+  color: var(--color-navy);
+  border: 0;
+  border-bottom: 1px solid rgba(10, 22, 40, 0.25);
+  border-radius: 0;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.18s ease;
+}
+.field:focus { border-bottom-color: var(--color-gold); }
+.field::placeholder { color: rgba(10, 22, 40, 0.35); }
+.field option { background-color: #ffffff; color: var(--color-navy); }
+textarea.field { resize: vertical; min-height: 5rem; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--color-cream-warm); }
+::-webkit-scrollbar-thumb { background: rgba(10, 22, 40, 0.25); border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-navy); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
