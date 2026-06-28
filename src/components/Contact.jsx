@@ -95,7 +95,7 @@ export default function Contact() {
               <ContactRow
                 icon={<Phone size={14} strokeWidth={1.6} />}
                 label="Phone"
-                value="+91 83694 15470"
+                value="+91-8369415470"
                 href="tel:+918369415470"
               />
               <ContactRow
