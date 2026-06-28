@@ -3,6 +3,7 @@ import {
   Mail,
   Phone,
   MapPin,
+  Globe,
   Send,
   CheckCircle2,
   Loader2,
@@ -83,19 +84,25 @@ export default function Contact() {
               <ContactRow
                 icon={<MapPin size={14} strokeWidth={1.6} />}
                 label="Office"
-                value="Mumbai, Maharashtra, India"
+                value="H27/703, Panchganga CHS, Pratikshanagar, Near Pratikshanagar Best Bus Depot, Sion, Mumbai - 400022, Maharashtra, India"
               />
               <ContactRow
                 icon={<Mail size={14} strokeWidth={1.6} />}
                 label="Email"
-                value="takperesmita@gmail.com"
-                href="mailto:takperesmita@gmail.com"
+                value="nitin@tecspecimex.com"
+                href="mailto:nitin@tecspecimex.com"
               />
               <ContactRow
                 icon={<Phone size={14} strokeWidth={1.6} />}
                 label="Phone"
                 value="+91 83694 15470"
                 href="tel:+918369415470"
+              />
+              <ContactRow
+                icon={<Globe size={14} strokeWidth={1.6} />}
+                label="Website"
+                value="www.tecspecimex.com"
+                href="https://www.tecspecimex.com"
               />
             </div>
 

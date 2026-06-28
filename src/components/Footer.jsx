@@ -2,6 +2,7 @@ import {
   Mail,
   Phone,
   MapPin,
+  Globe,
   Linkedin,
   Facebook,
   Twitter,
@@ -141,16 +142,17 @@ export default function Footer() {
               <li className="flex items-start gap-2.5">
                 <MapPin size={12} className="mt-0.5 text-gold shrink-0" />
                 <span className="text-cream/65 leading-relaxed">
-                  Mumbai, Maharashtra,<br />India
+                  H27/703, Panchganga CHS, Pratikshanagar, Near Pratikshanagar
+                  Best Bus Depot, Sion, Mumbai - 400022, Maharashtra, India
                 </span>
               </li>
               <li className="flex items-center gap-2.5">
                 <Mail size={12} className="text-gold shrink-0" />
                 <a
-                  href="mailto:takperesmita@gmail.com"
+                  href="mailto:nitin@tecspecimex.com"
                   className="text-cream/65 hover:text-gold transition-colors break-all"
                 >
-                  takperesmita@gmail.com
+                  nitin@tecspecimex.com
                 </a>
               </li>
               <li className="flex items-center gap-2.5">
@@ -160,6 +162,15 @@ export default function Footer() {
                   className="text-cream/65 hover:text-gold transition-colors"
                 >
                   +91 83694 15470
+                </a>
+              </li>
+              <li className="flex items-center gap-2.5">
+                <Globe size={12} className="text-gold shrink-0" />
+                <a
+                  href="https://www.tecspecimex.com"
+                  className="text-cream/65 hover:text-gold transition-colors break-all"
+                >
+                  www.tecspecimex.com
                 </a>
               </li>
             </ul>
